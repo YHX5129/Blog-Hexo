@@ -1,0 +1,692 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/Blog-Hexo/img/fluid.png">
+  <link rel="icon" href="/Blog-Hexo/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="ZnO">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="使用环境Python 3.9.13 with urllib, tkinter, getpassWindows 10 Home 正文前言众所周知，网易云音乐下载是要付费的，这让白嫖党十分头疼。于是我花了一年零零碎碎的世界，做了个网易云音乐下载器 运行效果     整体代码search.py:12345678910111213141516171819202122import urllib.reques">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python制作网易云音乐下载器 2.0 版本">
+<meta property="og:url" content="https://yhx5129.github.io/Blog-Hexo/2023/10/14/Python%E5%88%B6%E4%BD%9C%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90%E4%B8%8B%E8%BD%BD%E5%99%A8-Version2.0/index.html">
+<meta property="og:site_name" content="ZnO&#39;s Blog.">
+<meta property="og:description" content="使用环境Python 3.9.13 with urllib, tkinter, getpassWindows 10 Home 正文前言众所周知，网易云音乐下载是要付费的，这让白嫖党十分头疼。于是我花了一年零零碎碎的世界，做了个网易云音乐下载器 运行效果     整体代码search.py:12345678910111213141516171819202122import urllib.reques">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2023/07/16/pCIVjE9.png">
+<meta property="og:image" content="https://s1.ax1x.com/2023/07/14/pC4UpcQ.png">
+<meta property="og:image" content="https://s1.ax1x.com/2023/07/14/pC4US1g.png">
+<meta property="og:image" content="https://s1.ax1x.com/2023/07/15/pC5YLOs.png">
+<meta property="og:image" content="https://s1.ax1x.com/2023/07/15/pC5HsNn.png">
+<meta property="og:image" content="https://s1.ax1x.com/2023/07/15/pC5bVbQ.png">
+<meta property="article:published_time" content="2023-10-14T14:05:16.676Z">
+<meta property="article:modified_time" content="2023-10-14T14:05:46.846Z">
+<meta property="article:author" content="ZnO">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s1.ax1x.com/2023/07/16/pCIVjE9.png">
+  
+  
+  
+  <title>Python制作网易云音乐下载器 2.0 版本 - ZnO&#39;s Blog.</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/Blog-Hexo/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/Blog-Hexo/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/Blog-Hexo/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"yhx5129.github.io","root":"/Blog-Hexo/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/Blog-Hexo/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/Blog-Hexo/js/utils.js" ></script>
+  <script  src="/Blog-Hexo/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/Blog-Hexo/">
+      <strong>ZnO&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Blog-Hexo/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Blog-Hexo/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Blog-Hexo/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Blog-Hexo/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Blog-Hexo/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/Blog-Hexo/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Python制作网易云音乐下载器 2.0 版本"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-10-14 22:05" pubdate>
+          2023年10月14日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          28k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          231 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Python制作网易云音乐下载器 2.0 版本</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="使用环境"><a href="#使用环境" class="headerlink" title="使用环境"></a>使用环境</h2><p>Python 3.9.13 with urllib, tkinter, getpass<br>Windows 10 Home</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>众所周知，网易云音乐下载是要付费的，这让白嫖党十分头疼。于是我花了一年零零碎碎的世界，做了个网易云音乐下载器</p>
+<h3 id="运行效果"><a href="#运行效果" class="headerlink" title="运行效果"></a>运行效果</h3><p><img src="https://s1.ax1x.com/2023/07/16/pCIVjE9.png" srcset="/Blog-Hexo/img/loading.gif" lazyload alt="运行效果"><br><video width="810" height="540" controls><br>    <source src="https://75q8yl-my.sharepoint.com/personal/zno_75q8yl_onmicrosoft_com/_layouts/52/download.aspx?share=EcrnLS5XoBtJmqCVzf5ZNeUBMIH34OPuCegQFr7eiQV9wg" type="video/mp4"><br></video></p>
+<h3 id="整体代码"><a href="#整体代码" class="headerlink" title="整体代码"></a>整体代码</h3><h4 id="search-py"><a href="#search-py" class="headerlink" title="search.py:"></a><code>search.py</code>:</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> urllib.request, urllib.parse, sys<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">GetHtml</span>(<span class="hljs-params">url</span>):<br>    req = urllib.request.Request(url)<br>    <span class="hljs-keyword">with</span> urllib.request.urlopen(req, timeout=<span class="hljs-number">5</span>) <span class="hljs-keyword">as</span> response:<br>        html = response.read()<br>    <span class="hljs-keyword">return</span> html<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">SaveHtml</span>(<span class="hljs-params">file_name,file_content</span>):<br>    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(file_name.replace(<span class="hljs-string">&#x27;/&#x27;</span>,<span class="hljs-string">&#x27;_&#x27;</span>)+<span class="hljs-string">&quot;.html&quot;</span>,<span class="hljs-string">&quot;wb&quot;</span>) <span class="hljs-keyword">as</span> f:  <br>        f.write(file_content)<br>        f.flush()<br>        f.close()<br>    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(file_name.replace(<span class="hljs-string">&#x27;/&#x27;</span>,<span class="hljs-string">&#x27;_&#x27;</span>)+<span class="hljs-string">&quot;.html&quot;</span>, <span class="hljs-string">&quot;r&quot;</span>, encoding=<span class="hljs-string">&quot;utf-8&quot;</span>) <span class="hljs-keyword">as</span> f:<br>        <span class="hljs-keyword">return</span> f.read()<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">Download</span>(<span class="hljs-params">song</span>):<br>    params = &#123;<span class="hljs-string">&#x27;csrf_token&#x27;</span>: <span class="hljs-string">&#x27;&#x27;</span>, <span class="hljs-string">&#x27;type&#x27;</span>: <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;s&#x27;</span>: song&#125;<br>    query_string = urllib.parse.urlencode(params)<br>    url = <span class="hljs-string">&quot;http://music.163.com/api/search/get/web?&quot;</span> + query_string<br>    html = GetHtml(url)<br>    SaveHtml(<span class="hljs-string">&quot;Tmp&quot;</span>, html)<br></code></pre></td></tr></table></figure>
+<h4 id="main-py"><a href="#main-py" class="headerlink" title="main.py:"></a><code>main.py</code>:</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># coding = UTF-8</span><br><span class="hljs-keyword">import</span> search, sys<br><span class="hljs-keyword">from</span> tkinter <span class="hljs-keyword">import</span> *<br><span class="hljs-keyword">from</span> getpass <span class="hljs-keyword">import</span> getuser<br><span class="hljs-keyword">from</span> tkinter <span class="hljs-keyword">import</span> ttk<br><span class="hljs-keyword">from</span> os <span class="hljs-keyword">import</span> path<br><span class="hljs-keyword">from</span> os <span class="hljs-keyword">import</span> system<br><span class="hljs-keyword">from</span> tkinter.messagebox <span class="hljs-keyword">import</span> *<br><br>UserName = getuser()<br>WorkDir = path.dirname(__file__)<br>Name = Artist = <span class="hljs-string">&quot;&quot;</span><br>Id = Id1 = Id2 = Id3 = Id4 = Id5 = <span class="hljs-number">0</span><br>Nm1 = Nm2 = Nm3 = Nm4 = Nm5 = <span class="hljs-string">&quot;&quot;</span><br>Art1 = Art2 = Art3 = Art4 = Art5 = <span class="hljs-string">&quot;&quot;</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">Initialize</span>():<br>    <span class="hljs-keyword">global</span> Id1, Id2, Id3, Id4, Id5<br>    Id = Id1 = Id2 = Id3 = Id4 = Id5 = <span class="hljs-number">0</span><br>    Nm1.<span class="hljs-built_in">set</span>(<span class="hljs-string">&quot; 空 &quot;</span>); Nm2.<span class="hljs-built_in">set</span>(<span class="hljs-string">&quot; 空 &quot;</span>); Nm3.<span class="hljs-built_in">set</span>(<span class="hljs-string">&quot; 空 &quot;</span>); Nm4.<span class="hljs-built_in">set</span>(<span class="hljs-string">&quot; 空 &quot;</span>); Nm5.<span class="hljs-built_in">set</span>(<span class="hljs-string">&quot; 空 &quot;</span>)<br>    Art1.<span class="hljs-built_in">set</span>(<span class="hljs-string">&quot; 空 &quot;</span>); Art2.<span class="hljs-built_in">set</span>(<span class="hljs-string">&quot; 空 &quot;</span>); Art3.<span class="hljs-built_in">set</span>(<span class="hljs-string">&quot; 空 &quot;</span>); Art4.<span class="hljs-built_in">set</span>(<span class="hljs-string">&quot; 空 &quot;</span>); Art5.<span class="hljs-built_in">set</span>(<span class="hljs-string">&quot; 空 &quot;</span>)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">Download</span>(<span class="hljs-params">ID, SongName</span>):<br>    temp = <span class="hljs-string">&quot;http://music.163.com/song/media/outer/url?id=&quot;</span> + <span class="hljs-built_in">str</span>(ID) + <span class="hljs-string">&quot;.mp3&quot;</span><br>    system(<span class="hljs-string">&quot;aria2c -s 5 -x 5 -j 10 -d C:\\Users\\&quot;</span> + UserName + <span class="hljs-string">&quot;\\Downloads\\MusicDownload &quot;</span>  + <span class="hljs-string">&quot;-o &quot;</span> + SongName + <span class="hljs-string">&quot;.mp3 &quot;</span> + temp)<br>    system(<span class="hljs-string">&quot;start C:\\Users\\&quot;</span> + UserName + <span class="hljs-string">&quot;\\Downloads&quot;</span>)<br>    showinfo(<span class="hljs-string">&quot;提示&quot;</span>, <span class="hljs-string">&quot;下载完成，歌曲保存在下载目录！&quot;</span>)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">Down1</span>():<br>    Download(Id1, Nm1.get())<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">Down2</span>():<br>    Download(Id2, Nm2.get())<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">Down3</span>():<br>    Download(Id3, Nm3.get())<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">Down4</span>():<br>    Download(Id4, Nm4.get())<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">Down5</span>():<br>    Download(Id5, Nm5.get())<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">Fun</span>(<span class="hljs-params">idpos, artpos, <span class="hljs-type">List</span></span>):<br>    <span class="hljs-keyword">global</span> Id, Name, Artist<br>    i = idpos + <span class="hljs-number">5</span><br>    Id = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">while</span> (<span class="hljs-built_in">str</span>.isdigit(<span class="hljs-type">List</span>[i])):<br>        Id = Id * <span class="hljs-number">10</span> + <span class="hljs-built_in">int</span>(<span class="hljs-type">List</span>[i])<br>        i += <span class="hljs-number">1</span><br>    i += <span class="hljs-number">9</span><br>    Name = <span class="hljs-string">&quot;&quot;</span><br>    <span class="hljs-keyword">while</span> (<span class="hljs-type">List</span>[i] != <span class="hljs-string">&quot;\&quot;&quot;</span> <span class="hljs-keyword">or</span> <span class="hljs-type">List</span>[i - <span class="hljs-number">1</span>] == <span class="hljs-string">&quot;\\&quot;</span>):<br>        Name += <span class="hljs-type">List</span>[i]<br>        i += <span class="hljs-number">1</span><br>    i = artpos<br>    <span class="hljs-keyword">while</span> (<span class="hljs-type">List</span>[i] != <span class="hljs-string">&quot;,&quot;</span>):<br>        i = i + <span class="hljs-number">1</span><br>    i += <span class="hljs-number">9</span><br>    Artist = <span class="hljs-string">&quot;&quot;</span><br>    <span class="hljs-keyword">while</span> (<span class="hljs-type">List</span>[i] != <span class="hljs-string">&quot;\&quot;&quot;</span> <span class="hljs-keyword">or</span> <span class="hljs-type">List</span>[i - <span class="hljs-number">1</span>] == <span class="hljs-string">&quot;\\&quot;</span>):<br>        Artist += <span class="hljs-type">List</span>[i]<br>        i += <span class="hljs-number">1</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">Parse</span>(<span class="hljs-params"><span class="hljs-type">List</span></span>):<br>    cnt = <span class="hljs-number">0</span><br>    pos1 = pos2 = pos3 = pos4 = pos5 = -<span class="hljs-number">1</span><br>    art1 = art2 = art3 = art4 = art5 = -<span class="hljs-number">1</span><br>    Size = <span class="hljs-built_in">len</span>(<span class="hljs-type">List</span>)<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(Size - <span class="hljs-number">4</span>):<br>        <span class="hljs-built_in">print</span>(<span class="hljs-type">List</span>[i], end = <span class="hljs-string">&quot;&quot;</span>)<br>        <span class="hljs-keyword">if</span> <span class="hljs-type">List</span>[i] == <span class="hljs-string">&quot;\&quot;&quot;</span> <span class="hljs-keyword">and</span> <span class="hljs-type">List</span>[i + <span class="hljs-number">1</span>] == <span class="hljs-string">&quot;i&quot;</span> <span class="hljs-keyword">and</span> <span class="hljs-type">List</span>[i + <span class="hljs-number">2</span>] == <span class="hljs-string">&quot;d&quot;</span> <span class="hljs-keyword">and</span> <span class="hljs-type">List</span>[i + <span class="hljs-number">3</span>] == <span class="hljs-string">&quot;\&quot;&quot;</span> :<br>            cnt = cnt + <span class="hljs-number">1</span><br>            <span class="hljs-keyword">if</span> cnt % <span class="hljs-number">4</span> == <span class="hljs-number">1</span> :<br>                <span class="hljs-keyword">if</span> pos1 == -<span class="hljs-number">1</span> : pos1 = i; <span class="hljs-keyword">continue</span><br>                <span class="hljs-keyword">if</span> pos2 == -<span class="hljs-number">1</span> : pos2 = i; <span class="hljs-keyword">continue</span><br>                <span class="hljs-keyword">if</span> pos3 == -<span class="hljs-number">1</span> : pos3 = i; <span class="hljs-keyword">continue</span><br>                <span class="hljs-keyword">if</span> pos4 == -<span class="hljs-number">1</span> : pos4 = i; <span class="hljs-keyword">continue</span><br>                <span class="hljs-keyword">if</span> pos5 == -<span class="hljs-number">1</span> : pos5 = i; <span class="hljs-keyword">continue</span><br>            <span class="hljs-keyword">elif</span> cnt % <span class="hljs-number">4</span> == <span class="hljs-number">2</span>:<br>                <span class="hljs-keyword">if</span> art1 == -<span class="hljs-number">1</span> : art1 = i; <span class="hljs-keyword">continue</span><br>                <span class="hljs-keyword">if</span> art2 == -<span class="hljs-number">1</span> : art2 = i; <span class="hljs-keyword">continue</span><br>                <span class="hljs-keyword">if</span> art3 == -<span class="hljs-number">1</span> : art3 = i; <span class="hljs-keyword">continue</span><br>                <span class="hljs-keyword">if</span> art4 == -<span class="hljs-number">1</span> : art4 = i; <span class="hljs-keyword">continue</span><br>                <span class="hljs-keyword">if</span> art5 == -<span class="hljs-number">1</span> : art5 = i; <span class="hljs-keyword">continue</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;\n&quot;</span>, pos1, pos2, pos3, pos4, pos5)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;\n&quot;</span>, art1, art2, art3, art4, art5)<br>    <span class="hljs-keyword">global</span> Id1, Id2, Id3, Id4, Id5<br>    <span class="hljs-keyword">global</span> Nm1, Nm2, Nm3, Nm4, Nm5<br>    <span class="hljs-keyword">global</span> Art1, Art2, Art3, Art4, Art5<br>    Initialize()<br>    Fun(pos1, art1, <span class="hljs-type">List</span>)<br>    Id1 = Id<br>    Nm1.<span class="hljs-built_in">set</span>(Name)<br>    Art1.<span class="hljs-built_in">set</span>(Artist)<br>    Fun(pos2, art2, <span class="hljs-type">List</span>)<br>    Id2 = Id<br>    Nm2.<span class="hljs-built_in">set</span>(Name)<br>    Art2.<span class="hljs-built_in">set</span>(Artist)<br>    Fun(pos3, art3, <span class="hljs-type">List</span>)<br>    Id3 = Id<br>    Nm3.<span class="hljs-built_in">set</span>(Name)<br>    Art3.<span class="hljs-built_in">set</span>(Artist)<br>    Fun(pos4, art4, <span class="hljs-type">List</span>)<br>    Id4 = Id<br>    Nm4.<span class="hljs-built_in">set</span>(Name)<br>    Art4.<span class="hljs-built_in">set</span>(Artist)<br>    Fun(pos5, art5, <span class="hljs-type">List</span>)<br>    Id5 = Id<br>    Nm5.<span class="hljs-built_in">set</span>(Name)<br>    Art5.<span class="hljs-built_in">set</span>(Artist)<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">Search</span>():<br>    Name = entry.get()<br>    search.Download(Name)<br>    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;Tmp.html&quot;</span>, encoding = <span class="hljs-string">&quot;utf-8&quot;</span>) <span class="hljs-keyword">as</span> f:<br>        Tmp = f.read()<br>        f.close()<br>    Parse(Tmp)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">No_x</span>():<br>    Label(window, text = <span class="hljs-string">&quot;序号&quot;</span>, font = (<span class="hljs-string">&quot;微软雅黑&quot;</span>, <span class="hljs-number">12</span>)).place(x = <span class="hljs-number">75</span>, y = <span class="hljs-number">125</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br>    Label(window, text = <span class="hljs-string">&quot; 1 &quot;</span>, font = (<span class="hljs-string">&quot;微软雅黑&quot;</span>, <span class="hljs-number">11</span>)).place(x = <span class="hljs-number">75</span>, y = <span class="hljs-number">160</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br>    Label(window, text = <span class="hljs-string">&quot; 2 &quot;</span>, font = (<span class="hljs-string">&quot;微软雅黑&quot;</span>, <span class="hljs-number">11</span>)).place(x = <span class="hljs-number">75</span>, y = <span class="hljs-number">195</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br>    Label(window, text = <span class="hljs-string">&quot; 3 &quot;</span>, font = (<span class="hljs-string">&quot;微软雅黑&quot;</span>, <span class="hljs-number">11</span>)).place(x = <span class="hljs-number">75</span>, y = <span class="hljs-number">230</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br>    Label(window, text = <span class="hljs-string">&quot; 4 &quot;</span>, font = (<span class="hljs-string">&quot;微软雅黑&quot;</span>, <span class="hljs-number">11</span>)).place(x = <span class="hljs-number">75</span>, y = <span class="hljs-number">265</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br>    Label(window, text = <span class="hljs-string">&quot; 5 &quot;</span>, font = (<span class="hljs-string">&quot;微软雅黑&quot;</span>, <span class="hljs-number">11</span>)).place(x = <span class="hljs-number">75</span>, y = <span class="hljs-number">300</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">Nm_x</span>():<br>    Label(window, font = (<span class="hljs-string">&quot;微软雅黑&quot;</span>, <span class="hljs-number">12</span>), text = <span class="hljs-string">&quot; 歌曲名 &quot;</span>).place(x = <span class="hljs-number">215</span>, y = <span class="hljs-number">125</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br>    Label(window, font = (<span class="hljs-string">&quot;微软雅黑&quot;</span>, <span class="hljs-number">10</span>), textvariable = Nm1).place(x = <span class="hljs-number">215</span>, y = <span class="hljs-number">160</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br>    Label(window, font = (<span class="hljs-string">&quot;微软雅黑&quot;</span>, <span class="hljs-number">10</span>), textvariable = Nm2).place(x = <span class="hljs-number">215</span>, y = <span class="hljs-number">195</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br>    Label(window, font = (<span class="hljs-string">&quot;微软雅黑&quot;</span>, <span class="hljs-number">10</span>), textvariable = Nm3).place(x = <span class="hljs-number">215</span>, y = <span class="hljs-number">230</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br>    Label(window, font = (<span class="hljs-string">&quot;微软雅黑&quot;</span>, <span class="hljs-number">10</span>), textvariable = Nm4).place(x = <span class="hljs-number">215</span>, y = <span class="hljs-number">265</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br>    Label(window, font = (<span class="hljs-string">&quot;微软雅黑&quot;</span>, <span class="hljs-number">10</span>), textvariable = Nm5).place(x = <span class="hljs-number">215</span>, y = <span class="hljs-number">300</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">Art_x</span>():<br>    Label(window, font = (<span class="hljs-string">&quot;微软雅黑&quot;</span>, <span class="hljs-number">12</span>), text = <span class="hljs-string">&quot; 歌手名 &quot;</span>).place(x = <span class="hljs-number">380</span>, y = <span class="hljs-number">125</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br>    Label(window, font = (<span class="hljs-string">&quot;微软雅黑&quot;</span>, <span class="hljs-number">10</span>), textvariable = Art1).place(x = <span class="hljs-number">380</span>, y = <span class="hljs-number">160</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br>    Label(window, font = (<span class="hljs-string">&quot;微软雅黑&quot;</span>, <span class="hljs-number">10</span>), textvariable = Art2).place(x = <span class="hljs-number">380</span>, y = <span class="hljs-number">195</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br>    Label(window, font = (<span class="hljs-string">&quot;微软雅黑&quot;</span>, <span class="hljs-number">10</span>), textvariable = Art3).place(x = <span class="hljs-number">380</span>, y = <span class="hljs-number">230</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br>    Label(window, font = (<span class="hljs-string">&quot;微软雅黑&quot;</span>, <span class="hljs-number">10</span>), textvariable = Art4).place(x = <span class="hljs-number">380</span>, y = <span class="hljs-number">265</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br>    Label(window, font = (<span class="hljs-string">&quot;微软雅黑&quot;</span>, <span class="hljs-number">10</span>), textvariable = Art5).place(x = <span class="hljs-number">380</span>, y = <span class="hljs-number">300</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">Down_x</span>():<br>    Label(window, font = (<span class="hljs-string">&quot;微软雅黑&quot;</span>, <span class="hljs-number">12</span>), text = <span class="hljs-string">&quot; 下载 &quot;</span>).place(x = <span class="hljs-number">500</span>, y = <span class="hljs-number">125</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br>    ttk.Button(window, text = <span class="hljs-string">&#x27;下载&#x27;</span>, command = Down1).place(x = <span class="hljs-number">500</span>, y = <span class="hljs-number">160</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br>    ttk.Button(window, text = <span class="hljs-string">&#x27;下载&#x27;</span>, command = Down2).place(x = <span class="hljs-number">500</span>, y = <span class="hljs-number">195</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br>    ttk.Button(window, text = <span class="hljs-string">&#x27;下载&#x27;</span>, command = Down3).place(x = <span class="hljs-number">500</span>, y = <span class="hljs-number">230</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br>    ttk.Button(window, text = <span class="hljs-string">&#x27;下载&#x27;</span>, command = Down4).place(x = <span class="hljs-number">500</span>, y = <span class="hljs-number">265</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br>    ttk.Button(window, text = <span class="hljs-string">&#x27;下载&#x27;</span>, command = Down5).place(x = <span class="hljs-number">500</span>, y = <span class="hljs-number">300</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>():<br>    <span class="hljs-keyword">global</span> Nm1, Nm2, Nm3, Nm4, Nm5<br>    <span class="hljs-keyword">global</span> Art1, Art2, Art3, Art4, Art5<br>    <span class="hljs-keyword">global</span> window, entry<br>    window = Tk()<br>    window.title(<span class="hljs-string">&quot;网易云音乐下载器 2.0  Powered by 印皓显&quot;</span>)<br>    window.geometry(<span class="hljs-string">&quot;600x350&quot;</span>)<br>    window.iconphoto(<span class="hljs-literal">False</span>, PhotoImage(file = WorkDir + <span class="hljs-string">&quot;\\ICON.png&quot;</span>))<br>    lb = Label(window, text = <span class="hljs-string">&quot;网易云音乐下载器&quot;</span>, width = <span class="hljs-number">16</span>, height = <span class="hljs-number">1</span>, justify = <span class="hljs-string">&quot;center&quot;</span>, anchor = <span class="hljs-string">&quot;nw&quot;</span>, font = (<span class="hljs-string">&quot;宋体&quot;</span>, <span class="hljs-number">18</span>), fg = <span class="hljs-string">&quot;white&quot;</span>, bg = <span class="hljs-string">&quot;grey&quot;</span>, padx = <span class="hljs-number">10</span>, pady = <span class="hljs-number">5</span>)<br>    lb.place(x = <span class="hljs-number">300</span>, y = <span class="hljs-number">35</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br>    Nm1  = StringVar(); Nm2 = StringVar(); Nm3 = StringVar(); Nm4 = StringVar(); Nm5 = StringVar()<br>    Art1  = StringVar(); Art2 = StringVar(); Art3 = StringVar(); Art4 = StringVar(); Art5 = StringVar()<br>    Initialize()<br>    sv1 = StringVar()<br>    sv1.<span class="hljs-built_in">set</span>(<span class="hljs-string">&quot;在这里输入要搜索的歌名&quot;</span>)<br>    entry = ttk.Entry(window, width = <span class="hljs-number">40</span>, justify = CENTER, font = (<span class="hljs-string">&quot;微软雅黑&quot;</span>, <span class="hljs-number">10</span>),  exportselection = <span class="hljs-number">0</span>, textvariable = sv1)<br>    entry.place(x = <span class="hljs-number">55</span>, y = <span class="hljs-number">72.5</span>)<br>    png = PhotoImage(file =  WorkDir + <span class="hljs-string">&quot;\\Search.png&quot;</span>)<br>    button_search = ttk.Button(window, image = png, command = Search)<br>    button_search.place(x = <span class="hljs-number">450</span>, y = <span class="hljs-number">68</span>)<br>    No_x(); Nm_x(); Art_x(); Down_x()<br>    window.mainloop()<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    main()<br></code></pre></td></tr></table></figure>
+<h3 id="附带文件"><a href="#附带文件" class="headerlink" title="附带文件"></a>附带文件</h3><h4 id="ICON-png"><a href="#ICON-png" class="headerlink" title="ICON.png:"></a>ICON.png:</h4><p><img src="https://s1.ax1x.com/2023/07/14/pC4UpcQ.png" srcset="/Blog-Hexo/img/loading.gif" lazyload alt="ICON.png"></p>
+<h4 id="Search-png"><a href="#Search-png" class="headerlink" title="Search.png:"></a>Search.png:</h4><p><img src="https://s1.ax1x.com/2023/07/14/pC4US1g.png" srcset="/Blog-Hexo/img/loading.gif" lazyload alt="Search.png"></p>
+<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><h4 id="我的仓库与博客"><a href="#我的仓库与博客" class="headerlink" title="我的仓库与博客"></a>我的仓库与博客</h4><h5 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h5><p><a target="_blank" rel="noopener" href="https://github.com/YHX5129/NetEase-Cloud-Music-Downloader-V2.0">我的代码仓库</a><br>里面有代码文件，dist目录里有编译过的可执行文件<br><img src="https://s1.ax1x.com/2023/07/15/pC5YLOs.png" srcset="/Blog-Hexo/img/loading.gif" lazyload alt="pC5YLOs.png"><br><a target="_blank" rel="noopener" href="https://github.com/YHX5129/">我的Github大号</a><br>如果打不开，下载<a target="_blank" rel="noopener" href="https://wwt.lanzouw.com/ieQsu0feawda">FastGithub</a>，请不要使用FireFox访问，FireFox会拦截FastGithub的证书</p>
+<h5 id="博客"><a href="#博客" class="headerlink" title="博客"></a>博客</h5><p><a target="_blank" rel="noopener" href="https://zno2010.github.io/">我的博客地址</a><br><img src="https://s1.ax1x.com/2023/07/15/pC5HsNn.png" srcset="/Blog-Hexo/img/loading.gif" lazyload alt="pC5HsNn.png"><br><a target="_blank" rel="noopener" href="https://github.com/ZnO2010/">我的Github小号</a></p>
+<h3 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h3><h4 id="search-py-1"><a href="#search-py-1" class="headerlink" title="search.py:"></a><code>search.py</code>:</h4><p>这个是我从CSDN上找的代码，<a target="_blank" rel="noopener" href="https://blog.csdn.net/john_bian/article/details/71025372">原博客在这里</a><br><img src="https://s1.ax1x.com/2023/07/15/pC5bVbQ.png" srcset="/Blog-Hexo/img/loading.gif" lazyload alt="pC5bVbQ.png"><br>但是，在实际调用的过程中，因为Python的byte和str屡屡报错，于是我喊来了ChatGPT，但是ChatGPT一次只解决一个问题，于是在与ChatGPT斗智斗勇了20多回后，代码变成了现在的样子，另外，网易云音乐的搜索API是<a target="_blank" rel="noopener" href="http://music.163.com/api/search/get/web?csrf_token=&type=1&s=">http://music.163.com/api/search/get/web?csrf_token=&amp;type=1&amp;s=</a> + 歌名。<br>其实本来第二行还有一行代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">sys.stdout.reconfigure(encoding = <span class="hljs-string">&#x27;utf-8&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<p>但是用Pyinstaller（用的Auto-Py-To-Exe界面）时，这一行屡屡报错，删了也没影响，于是就删了。<br>由于这里代码我不熟悉，不做过多讲述，有兴趣的自行查阅。</p>
+<h4 id="main-py-1"><a href="#main-py-1" class="headerlink" title="main.py:"></a><code>main.py</code>:</h4><h5 id="导入需要的库"><a href="#导入需要的库" class="headerlink" title="导入需要的库"></a>导入需要的库</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># coding = UTF-8</span><br><span class="hljs-keyword">import</span> search, sys <span class="hljs-comment">#search就是search.py，sys是上面search.py所说的删去的代码，可以不加</span><br><span class="hljs-keyword">from</span> tkinter <span class="hljs-keyword">import</span> * <span class="hljs-comment">#界面</span><br><span class="hljs-keyword">from</span> getpass <span class="hljs-keyword">import</span> getuser <span class="hljs-comment">#获取用户名，找到“下载”目录</span><br><span class="hljs-keyword">from</span> tkinter <span class="hljs-keyword">import</span> ttk <span class="hljs-comment">#tkinter的ttk，界面要好看，我习惯上只用里面的Text, Entry, Button。其他都是用tkinter的</span><br><span class="hljs-keyword">from</span> os <span class="hljs-keyword">import</span> path <span class="hljs-comment">#用于获取工作目录</span><br><span class="hljs-keyword">from</span> os <span class="hljs-keyword">import</span> system <span class="hljs-comment">#用于执行aria2命令行</span><br><span class="hljs-keyword">from</span> tkinter.messagebox <span class="hljs-keyword">import</span> * <span class="hljs-comment">#提示框</span><br></code></pre></td></tr></table></figure>
+<p>这里没有什么要讲的，要讲的在注释里。</p>
+<h5 id="变量初始值"><a href="#变量初始值" class="headerlink" title="变量初始值"></a>变量初始值</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">UserName = getuser() <span class="hljs-comment">#用户名</span><br>WorkDir = path.dirname(__file__) <span class="hljs-comment">#工作目录</span><br>Name = Artist = <span class="hljs-string">&quot;&quot;</span> <span class="hljs-comment">#用于解析表单时的临时存储信息的变量</span><br>Id = Id1 = Id2 = Id3 = Id4 = Id5 = <span class="hljs-number">0</span> <span class="hljs-comment">#歌曲ID</span><br>Nm1 = Nm2 = Nm3 = Nm4 = Nm5 = <span class="hljs-string">&quot;&quot;</span> <span class="hljs-comment">#全称Name，歌曲名字</span><br>Art1 = Art2 = Art3 = Art4 = Art5 = <span class="hljs-string">&quot;&quot;</span> <span class="hljs-comment">#全称Artist，歌手</span><br></code></pre></td></tr></table></figure>
+<h5 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">Initialize</span>():<br>    <span class="hljs-keyword">global</span> Id1, Id2, Id3, Id4, Id5<br>    Id = Id1 = Id2 = Id3 = Id4 = Id5 = <span class="hljs-number">0</span><br>    Nm1.<span class="hljs-built_in">set</span>(<span class="hljs-string">&quot; 空 &quot;</span>); Nm2.<span class="hljs-built_in">set</span>(<span class="hljs-string">&quot; 空 &quot;</span>); Nm3.<span class="hljs-built_in">set</span>(<span class="hljs-string">&quot; 空 &quot;</span>); Nm4.<span class="hljs-built_in">set</span>(<span class="hljs-string">&quot; 空 &quot;</span>); Nm5.<span class="hljs-built_in">set</span>(<span class="hljs-string">&quot; 空 &quot;</span>)<br>    Art1.<span class="hljs-built_in">set</span>(<span class="hljs-string">&quot; 空 &quot;</span>); Art2.<span class="hljs-built_in">set</span>(<span class="hljs-string">&quot; 空 &quot;</span>); Art3.<span class="hljs-built_in">set</span>(<span class="hljs-string">&quot; 空 &quot;</span>); Art4.<span class="hljs-built_in">set</span>(<span class="hljs-string">&quot; 空 &quot;</span>); Art5.<span class="hljs-built_in">set</span>(<span class="hljs-string">&quot; 空 &quot;</span>)<br></code></pre></td></tr></table></figure>
+<p>因为要多次调用，所以把这个初始化写成函数。<br>注：Nm1~5在后面声明，是StringVar。</p>
+<h5 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h5><p>这里是通过歌曲ID调用aria2进行下载，编译的可执行文件里已经包含。</p>
+<h6 id="主要函数："><a href="#主要函数：" class="headerlink" title="主要函数："></a>主要函数：</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">Download</span>(<span class="hljs-params">ID, SongName</span>):<br>    temp = <span class="hljs-string">&quot;http://music.163.com/song/media/outer/url?id=&quot;</span> + <span class="hljs-built_in">str</span>(ID) + <span class="hljs-string">&quot;.mp3&quot;</span><br>    system(<span class="hljs-string">&quot;aria2c -s 5 -x 5 -j 10 -d C:\\Users\\&quot;</span> + UserName + <span class="hljs-string">&quot;\\Downloads\\MusicDownload &quot;</span>  + <span class="hljs-string">&quot;-o &quot;</span> + SongName + <span class="hljs-string">&quot;.mp3 &quot;</span> + temp)<br>    system(<span class="hljs-string">&quot;start C:\\Users\\&quot;</span> + UserName + <span class="hljs-string">&quot;\\Downloads&quot;</span>)<br>    showinfo(<span class="hljs-string">&quot;提示&quot;</span>, <span class="hljs-string">&quot;下载完成，歌曲保存在下载目录！&quot;</span>)<br></code></pre></td></tr></table></figure>
+<h6 id="供各个按钮使用的函数："><a href="#供各个按钮使用的函数：" class="headerlink" title="供各个按钮使用的函数："></a>供各个按钮使用的函数：</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">Down</span>&#123;x&#125;():<br>    Download(Id&#123;x&#125;, Nm&#123;x&#125;.get())<br></code></pre></td></tr></table></figure>
+<p>实际中{x}要换成数字，我的范围是一到五，为节省篇幅写成这种形式。<br>例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">Down2</span>():<br>    Download(Id2, Nm2.get())<br></code></pre></td></tr></table></figure>
+<p>由于Nm{x}是StringVar，使用前要get一下。</p>
+<h5 id="解析表单"><a href="#解析表单" class="headerlink" title="解析表单"></a>解析表单</h5><h6 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">Fun</span>(<span class="hljs-params">idpos, artpos, <span class="hljs-type">List</span></span>):<br>    <span class="hljs-keyword">global</span> Id, Name, Artist<br>    i = idpos + <span class="hljs-number">5</span><br>    Id = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">while</span> (<span class="hljs-built_in">str</span>.isdigit(<span class="hljs-type">List</span>[i])):<br>        Id = Id * <span class="hljs-number">10</span> + <span class="hljs-built_in">int</span>(<span class="hljs-type">List</span>[i])<br>        i += <span class="hljs-number">1</span><br>    i += <span class="hljs-number">9</span><br>    Name = <span class="hljs-string">&quot;&quot;</span><br>    <span class="hljs-keyword">while</span> (<span class="hljs-type">List</span>[i] != <span class="hljs-string">&quot;\&quot;&quot;</span> <span class="hljs-keyword">or</span> <span class="hljs-type">List</span>[i - <span class="hljs-number">1</span>] == <span class="hljs-string">&quot;\\&quot;</span>):<br>        Name += <span class="hljs-type">List</span>[i]<br>        i += <span class="hljs-number">1</span><br>    i = artpos<br>    <span class="hljs-keyword">while</span> (<span class="hljs-type">List</span>[i] != <span class="hljs-string">&quot;,&quot;</span>):<br>        i = i + <span class="hljs-number">1</span><br>    i += <span class="hljs-number">9</span><br>    Artist = <span class="hljs-string">&quot;&quot;</span><br>    <span class="hljs-keyword">while</span> (<span class="hljs-type">List</span>[i] != <span class="hljs-string">&quot;\&quot;&quot;</span> <span class="hljs-keyword">or</span> <span class="hljs-type">List</span>[i - <span class="hljs-number">1</span>] == <span class="hljs-string">&quot;\\&quot;</span>):<br>        Artist += <span class="hljs-type">List</span>[i]<br>        i += <span class="hljs-number">1</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">Parse</span>(<span class="hljs-params"><span class="hljs-type">List</span></span>):<br>    cnt = <span class="hljs-number">0</span><br>    pos1 = pos2 = pos3 = pos4 = pos5 = -<span class="hljs-number">1</span><br>    art1 = art2 = art3 = art4 = art5 = -<span class="hljs-number">1</span><br>    Size = <span class="hljs-built_in">len</span>(<span class="hljs-type">List</span>)<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(Size - <span class="hljs-number">4</span>):<br>        <span class="hljs-built_in">print</span>(<span class="hljs-type">List</span>[i], end = <span class="hljs-string">&quot;&quot;</span>)<br>        <span class="hljs-keyword">if</span> <span class="hljs-type">List</span>[i] == <span class="hljs-string">&quot;\&quot;&quot;</span> <span class="hljs-keyword">and</span> <span class="hljs-type">List</span>[i + <span class="hljs-number">1</span>] == <span class="hljs-string">&quot;i&quot;</span> <span class="hljs-keyword">and</span> <span class="hljs-type">List</span>[i + <span class="hljs-number">2</span>] == <span class="hljs-string">&quot;d&quot;</span> <span class="hljs-keyword">and</span> <span class="hljs-type">List</span>[i + <span class="hljs-number">3</span>] == <span class="hljs-string">&quot;\&quot;&quot;</span> :<br>            cnt = cnt + <span class="hljs-number">1</span><br>            <span class="hljs-keyword">if</span> cnt % <span class="hljs-number">4</span> == <span class="hljs-number">1</span> :<br>                <span class="hljs-keyword">if</span> pos1 == -<span class="hljs-number">1</span> : pos1 = i; <span class="hljs-keyword">continue</span><br>                <span class="hljs-keyword">if</span> pos2 == -<span class="hljs-number">1</span> : pos2 = i; <span class="hljs-keyword">continue</span><br>                <span class="hljs-keyword">if</span> pos3 == -<span class="hljs-number">1</span> : pos3 = i; <span class="hljs-keyword">continue</span><br>                <span class="hljs-keyword">if</span> pos4 == -<span class="hljs-number">1</span> : pos4 = i; <span class="hljs-keyword">continue</span><br>                <span class="hljs-keyword">if</span> pos5 == -<span class="hljs-number">1</span> : pos5 = i; <span class="hljs-keyword">continue</span><br>            <span class="hljs-keyword">elif</span> cnt % <span class="hljs-number">4</span> == <span class="hljs-number">2</span>:<br>                <span class="hljs-keyword">if</span> art1 == -<span class="hljs-number">1</span> : art1 = i; <span class="hljs-keyword">continue</span><br>                <span class="hljs-keyword">if</span> art2 == -<span class="hljs-number">1</span> : art2 = i; <span class="hljs-keyword">continue</span><br>                <span class="hljs-keyword">if</span> art3 == -<span class="hljs-number">1</span> : art3 = i; <span class="hljs-keyword">continue</span><br>                <span class="hljs-keyword">if</span> art4 == -<span class="hljs-number">1</span> : art4 = i; <span class="hljs-keyword">continue</span><br>                <span class="hljs-keyword">if</span> art5 == -<span class="hljs-number">1</span> : art5 = i; <span class="hljs-keyword">continue</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;\n&quot;</span>, pos1, pos2, pos3, pos4, pos5)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;\n&quot;</span>, art1, art2, art3, art4, art5)<br>    <span class="hljs-keyword">global</span> Id1, Id2, Id3, Id4, Id5<br>    <span class="hljs-keyword">global</span> Nm1, Nm2, Nm3, Nm4, Nm5<br>    <span class="hljs-keyword">global</span> Art1, Art2, Art3, Art4, Art5<br>    Initialize()<br>    Fun(pos1, art1, <span class="hljs-type">List</span>)<br>    Id1 = Id<br>    Nm1.<span class="hljs-built_in">set</span>(Name)<br>    Art1.<span class="hljs-built_in">set</span>(Artist)<br>    Fun(pos2, art2, <span class="hljs-type">List</span>)<br>    Id2 = Id<br>    Nm2.<span class="hljs-built_in">set</span>(Name)<br>    Art2.<span class="hljs-built_in">set</span>(Artist)<br>    Fun(pos3, art3, <span class="hljs-type">List</span>)<br>    Id3 = Id<br>    Nm3.<span class="hljs-built_in">set</span>(Name)<br>    Art3.<span class="hljs-built_in">set</span>(Artist)<br>    Fun(pos4, art4, <span class="hljs-type">List</span>)<br>    Id4 = Id<br>    Nm4.<span class="hljs-built_in">set</span>(Name)<br>    Art4.<span class="hljs-built_in">set</span>(Artist)<br>    Fun(pos5, art5, <span class="hljs-type">List</span>)<br>    Id5 = Id<br>    Nm5.<span class="hljs-built_in">set</span>(Name)<br>    Art5.<span class="hljs-built_in">set</span>(Artist)<br></code></pre></td></tr></table></figure>
+<p>这段代码有点长，但大部分都是重复的，我们分析一下。<br>我们把表单放出来看一看，例如Dissension的搜索结果（财迷审判曲，UT）</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs elixir">&#123;<span class="hljs-string">&quot;result&quot;</span><span class="hljs-symbol">:</span>&#123;<span class="hljs-string">&quot;songs&quot;</span><span class="hljs-symbol">:</span>[&#123;<span class="hljs-string">&quot;id&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">1999966349</span>,<span class="hljs-string">&quot;name&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;Dissension&quot;</span></span>,<span class="hljs-string">&quot;artists&quot;</span><span class="hljs-symbol">:</span>[&#123;<span class="hljs-string">&quot;id&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">54748338</span>,<span class="hljs-string">&quot;name&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;itsaleccio&quot;</span></span>,<span class="hljs-string">&quot;picUrl&quot;</span><span class="hljs-symbol">:null</span>,<span class="hljs-string">&quot;alias&quot;</span><span class="hljs-symbol">:[]</span>,<span class="hljs-string">&quot;albumSize&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;picId&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;fansGroup&quot;</span><span class="hljs-symbol">:null</span>,<span class="hljs-string">&quot;img1v1Url&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;http://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg&quot;</span></span>,<span class="hljs-string">&quot;img1v1&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;trans&quot;</span><span class="hljs-symbol">:null</span>&#125;],<span class="hljs-string">&quot;album&quot;</span><span class="hljs-symbol">:</span>&#123;<span class="hljs-string">&quot;id&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">155235630</span>,<span class="hljs-string">&quot;name&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;Dissension&quot;</span></span>,<span class="hljs-string">&quot;artist&quot;</span><span class="hljs-symbol">:</span>&#123;<span class="hljs-string">&quot;id&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;name&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;&quot;</span></span>,<span class="hljs-string">&quot;picUrl&quot;</span><span class="hljs-symbol">:null</span>,<span class="hljs-string">&quot;alias&quot;</span><span class="hljs-symbol">:[]</span>,<span class="hljs-string">&quot;albumSize&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;picId&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;fansGroup&quot;</span><span class="hljs-symbol">:null</span>,<span class="hljs-string">&quot;img1v1Url&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;http://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg&quot;</span></span>,<span class="hljs-string">&quot;img1v1&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;trans&quot;</span><span class="hljs-symbol">:null</span>&#125;,<span class="hljs-string">&quot;publishTime&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">1668700800000</span>,<span class="hljs-string">&quot;size&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">1</span>,<span class="hljs-string">&quot;copyrightId&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">743010</span>,<span class="hljs-string">&quot;status&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">1</span>,<span class="hljs-string">&quot;picId&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">109951168074324026</span>,<span class="hljs-string">&quot;mark&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>&#125;,<span class="hljs-string">&quot;duration&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">290706</span>,<span class="hljs-string">&quot;copyrightId&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">743010</span>,<span class="hljs-string">&quot;status&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;alias&quot;</span><span class="hljs-symbol">:[]</span>,<span class="hljs-string">&quot;rtype&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;ftype&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;mvid&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;fee&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">8</span>,<span class="hljs-string">&quot;rUrl&quot;</span><span class="hljs-symbol">:null</span>,<span class="hljs-string">&quot;mark&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">270464</span>&#125;,&#123;<span class="hljs-string">&quot;id&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">1866749947</span>,<span class="hljs-string">&quot;name&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;Dissension&quot;</span></span>,<span class="hljs-string">&quot;artists&quot;</span><span class="hljs-symbol">:</span>[&#123;<span class="hljs-string">&quot;id&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">844422</span>,<span class="hljs-string">&quot;name&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;Dissension&quot;</span></span>,<span class="hljs-string">&quot;picUrl&quot;</span><span class="hljs-symbol">:null</span>,<span class="hljs-string">&quot;alias&quot;</span><span class="hljs-symbol">:[]</span>,<span class="hljs-string">&quot;albumSize&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;picId&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;fansGroup&quot;</span><span class="hljs-symbol">:null</span>,<span class="hljs-string">&quot;img1v1Url&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;http://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg&quot;</span></span>,<span class="hljs-string">&quot;img1v1&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;trans&quot;</span><span class="hljs-symbol">:null</span>&#125;],<span class="hljs-string">&quot;album&quot;</span><span class="hljs-symbol">:</span>&#123;<span class="hljs-string">&quot;id&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">131336481</span>,<span class="hljs-string">&quot;name&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;Why Work For Death / We The Fooled&quot;</span></span>,<span class="hljs-string">&quot;artist&quot;</span><span class="hljs-symbol">:</span>&#123;<span class="hljs-string">&quot;id&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;name&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;&quot;</span></span>,<span class="hljs-string">&quot;picUrl&quot;</span><span class="hljs-symbol">:null</span>,<span class="hljs-string">&quot;alias&quot;</span><span class="hljs-symbol">:[]</span>,<span class="hljs-string">&quot;albumSize&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;picId&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;fansGroup&quot;</span><span class="hljs-symbol">:null</span>,<span class="hljs-string">&quot;img1v1Url&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;http://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg&quot;</span></span>,<span class="hljs-string">&quot;img1v1&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;trans&quot;</span><span class="hljs-symbol">:null</span>&#125;,<span class="hljs-string">&quot;publishTime&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">1353340800000</span>,<span class="hljs-string">&quot;size&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">22</span>,<span class="hljs-string">&quot;copyrightId&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">1416336</span>,<span class="hljs-string">&quot;status&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">1</span>,<span class="hljs-string">&quot;picId&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">109951166249307225</span>,<span class="hljs-string">&quot;mark&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>&#125;,<span class="hljs-string">&quot;duration&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">116866</span>,<span class="hljs-string">&quot;copyrightId&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">1416336</span>,<span class="hljs-string">&quot;status&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;alias&quot;</span><span class="hljs-symbol">:[]</span>,<span class="hljs-string">&quot;rtype&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;ftype&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;mvid&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;fee&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">8</span>,<span class="hljs-string">&quot;rUrl&quot;</span><span class="hljs-symbol">:null</span>,<span class="hljs-string">&quot;mark&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">270336</span>&#125;,&#123;<span class="hljs-string">&quot;id&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">1411740614</span>,<span class="hljs-string">&quot;name&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;Dissension&quot;</span></span>,<span class="hljs-string">&quot;artists&quot;</span><span class="hljs-symbol">:</span>[&#123;<span class="hljs-string">&quot;id&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">15005023</span>,<span class="hljs-string">&quot;name&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;Evenian&quot;</span></span>,<span class="hljs-string">&quot;picUrl&quot;</span><span class="hljs-symbol">:null</span>,<span class="hljs-string">&quot;alias&quot;</span><span class="hljs-symbol">:[]</span>,<span class="hljs-string">&quot;albumSize&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;picId&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;fansGroup&quot;</span><span class="hljs-symbol">:null</span>,<span class="hljs-string">&quot;img1v1Url&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;http://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg&quot;</span></span>,<span class="hljs-string">&quot;img1v1&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;trans&quot;</span><span class="hljs-symbol">:null</span>&#125;],<span class="hljs-string">&quot;album&quot;</span><span class="hljs-symbol">:</span>&#123;<span class="hljs-string">&quot;id&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">84325237</span>,<span class="hljs-string">&quot;name&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;Tolerance for Pain&quot;</span></span>,<span class="hljs-string">&quot;artist&quot;</span><span class="hljs-symbol">:</span>&#123;<span class="hljs-string">&quot;id&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;name&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;&quot;</span></span>,<span class="hljs-string">&quot;picUrl&quot;</span><span class="hljs-symbol">:null</span>,<span class="hljs-string">&quot;alias&quot;</span><span class="hljs-symbol">:[]</span>,<span class="hljs-string">&quot;albumSize&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;picId&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;fansGroup&quot;</span><span class="hljs-symbol">:null</span>,<span class="hljs-string">&quot;img1v1Url&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;http://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg&quot;</span></span>,<span class="hljs-string">&quot;img1v1&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;trans&quot;</span><span class="hljs-symbol">:null</span>&#125;,<span class="hljs-string">&quot;publishTime&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">1472054400000</span>,<span class="hljs-string">&quot;size&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">10</span>,<span class="hljs-string">&quot;copyrightId&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">743010</span>,<span class="hljs-string">&quot;status&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">1</span>,<span class="hljs-string">&quot;picId&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">109951164577230899</span>,<span class="hljs-string">&quot;mark&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>&#125;,<span class="hljs-string">&quot;duration&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">276813</span>,<span class="hljs-string">&quot;copyrightId&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">743010</span>,<span class="hljs-string">&quot;status&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;alias&quot;</span><span class="hljs-symbol">:[]</span>,<span class="hljs-string">&quot;rtype&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;ftype&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;mvid&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;fee&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">8</span>,<span class="hljs-string">&quot;rUrl&quot;</span><span class="hljs-symbol">:null</span>,<span class="hljs-string">&quot;mark&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">1319040</span>&#125;,&#123;<span class="hljs-string">&quot;id&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">1465116058</span>,<span class="hljs-string">&quot;name&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;Dissension&quot;</span></span>,<span class="hljs-string">&quot;artists&quot;</span><span class="hljs-symbol">:</span>[&#123;<span class="hljs-string">&quot;id&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">36120802</span>,<span class="hljs-string">&quot;name&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;InfraSound Music&quot;</span></span>,<span class="hljs-string">&quot;picUrl&quot;</span><span class="hljs-symbol">:null</span>,<span class="hljs-string">&quot;alias&quot;</span><span class="hljs-symbol">:[]</span>,<span class="hljs-string">&quot;albumSize&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;picId&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;fansGroup&quot;</span><span class="hljs-symbol">:null</span>,<span class="hljs-string">&quot;img1v1Url&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg&quot;</span></span>,<span class="hljs-string">&quot;img1v1&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;trans&quot;</span><span class="hljs-symbol">:null</span>&#125;],<span class="hljs-string">&quot;album&quot;</span><span class="hljs-symbol">:</span>&#123;<span class="hljs-string">&quot;id&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">92897872</span>,<span class="hljs-string">&quot;name&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;Cronos&quot;</span></span>,<span class="hljs-string">&quot;artist&quot;</span><span class="hljs-symbol">:</span>&#123;<span class="hljs-string">&quot;id&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;name&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;&quot;</span></span>,<span class="hljs-string">&quot;picUrl&quot;</span><span class="hljs-symbol">:null</span>,<span class="hljs-string">&quot;alias&quot;</span><span class="hljs-symbol">:[]</span>,<span class="hljs-string">&quot;albumSize&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;picId&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;fansGroup&quot;</span><span class="hljs-symbol">:null</span>,<span class="hljs-string">&quot;img1v1Url&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg&quot;</span></span>,<span class="hljs-string">&quot;img1v1&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;trans&quot;</span><span class="hljs-symbol">:null</span>&#125;,<span class="hljs-string">&quot;publishTime&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">1595433600000</span>,<span class="hljs-string">&quot;size&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">15</span>,<span class="hljs-string">&quot;copyrightId&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">743010</span>,<span class="hljs-string">&quot;status&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">1</span>,<span class="hljs-string">&quot;picId&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">109951167231342383</span>,<span class="hljs-string">&quot;mark&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>&#125;,<span class="hljs-string">&quot;duration&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">161600</span>,<span class="hljs-string">&quot;copyrightId&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">743010</span>,<span class="hljs-string">&quot;status&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;alias&quot;</span><span class="hljs-symbol">:[]</span>,<span class="hljs-string">&quot;rtype&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;ftype&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;mvid&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;fee&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">8</span>,<span class="hljs-string">&quot;rUrl&quot;</span><span class="hljs-symbol">:null</span>,<span class="hljs-string">&quot;mark&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">537141376</span>&#125;,&#123;<span class="hljs-string">&quot;id&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">1959646416</span>,<span class="hljs-string">&quot;name&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;DISSENSION (U.S. Version)&quot;</span></span>,<span class="hljs-string">&quot;artists&quot;</span><span class="hljs-symbol">:</span>[&#123;<span class="hljs-string">&quot;id&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">53213473</span>,<span class="hljs-string">&quot;name&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;NEMOPHILA&quot;</span></span>,<span class="hljs-string">&quot;picUrl&quot;</span><span class="hljs-symbol">:null</span>,<span class="hljs-string">&quot;alias&quot;</span><span class="hljs-symbol">:[]</span>,<span class="hljs-string">&quot;albumSize&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;picId&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;fansGroup&quot;</span><span class="hljs-symbol">:null</span>,<span class="hljs-string">&quot;img1v1Url&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg&quot;</span></span>,<span class="hljs-string">&quot;img1v1&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;trans&quot;</span><span class="hljs-symbol">:null</span>&#125;],<span class="hljs-string">&quot;album&quot;</span><span class="hljs-symbol">:</span>&#123;<span class="hljs-string">&quot;id&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">147203389</span>,<span class="hljs-string">&quot;name&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;REVIVE (U.S. Version)&quot;</span></span>,<span class="hljs-string">&quot;artist&quot;</span><span class="hljs-symbol">:</span>&#123;<span class="hljs-string">&quot;id&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;name&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;&quot;</span></span>,<span class="hljs-string">&quot;picUrl&quot;</span><span class="hljs-symbol">:null</span>,<span class="hljs-string">&quot;alias&quot;</span><span class="hljs-symbol">:[]</span>,<span class="hljs-string">&quot;albumSize&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;picId&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;fansGroup&quot;</span><span class="hljs-symbol">:null</span>,<span class="hljs-string">&quot;img1v1Url&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg&quot;</span></span>,<span class="hljs-string">&quot;img1v1&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;trans&quot;</span><span class="hljs-symbol">:null</span>&#125;,<span class="hljs-string">&quot;publishTime&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">1655740800000</span>,<span class="hljs-string">&quot;size&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">11</span>,<span class="hljs-string">&quot;copyrightId&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">1416336</span>,<span class="hljs-string">&quot;status&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">1</span>,<span class="hljs-string">&quot;picId&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">109951167598994169</span>,<span class="hljs-string">&quot;mark&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>&#125;,<span class="hljs-string">&quot;duration&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">241466</span>,<span class="hljs-string">&quot;copyrightId&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">1416336</span>,<span class="hljs-string">&quot;status&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;alias&quot;</span><span class="hljs-symbol">:[]</span>,<span class="hljs-string">&quot;rtype&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;ftype&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;mvid&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;fee&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">8</span>,<span class="hljs-string">&quot;rUrl&quot;</span><span class="hljs-symbol">:null</span>,<span class="hljs-string">&quot;mark&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">1318912</span>&#125;,&#123;<span class="hljs-string">&quot;id&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">1493870931</span>,<span class="hljs-string">&quot;name&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;Dissension&quot;</span></span>,<span class="hljs-string">&quot;artists&quot;</span><span class="hljs-symbol">:</span>[&#123;<span class="hljs-string">&quot;id&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">91154</span>,<span class="hljs-string">&quot;name&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;Dissenter&quot;</span></span>,<span class="hljs-string">&quot;picUrl&quot;</span><span class="hljs-symbol">:null</span>,<span class="hljs-string">&quot;alias&quot;</span><span class="hljs-symbol">:[]</span>,<span class="hljs-string">&quot;albumSize&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;picId&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;fansGroup&quot;</span><span class="hljs-symbol">:null</span>,<span class="hljs-string">&quot;img1v1Url&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg&quot;</span></span>,<span class="hljs-string">&quot;img1v1&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;trans&quot;</span><span class="hljs-symbol">:null</span>&#125;],<span class="hljs-string">&quot;album&quot;</span><span class="hljs-symbol">:</span>&#123;<span class="hljs-string">&quot;id&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">98045629</span>,<span class="hljs-string">&quot;name&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;Suicide Heights&quot;</span></span>,<span class="hljs-string">&quot;artist&quot;</span><span class="hljs-symbol">:</span>&#123;<span class="hljs-string">&quot;id&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;name&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;&quot;</span></span>,<span class="hljs-string">&quot;picUrl&quot;</span><span class="hljs-symbol">:null</span>,<span class="hljs-string">&quot;alias&quot;</span><span class="hljs-symbol">:[]</span>,<span class="hljs-string">&quot;albumSize&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;picId&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;fansGroup&quot;</span><span class="hljs-symbol">:null</span>,<span class="hljs-string">&quot;img1v1Url&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg&quot;</span></span>,<span class="hljs-string">&quot;img1v1&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;trans&quot;</span><span class="hljs-symbol">:null</span>&#125;,<span class="hljs-string">&quot;publishTime&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">1525017600000</span>,<span class="hljs-string">&quot;size&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">11</span>,<span class="hljs-string">&quot;copyrightId&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">743010</span>,<span class="hljs-string">&quot;status&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">1</span>,<span class="hljs-string">&quot;picId&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">109951165453328865</span>,<span class="hljs-string">&quot;mark&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>&#125;,<span class="hljs-string">&quot;duration&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">141174</span>,<span class="hljs-string">&quot;copyrightId&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">743010</span>,<span class="hljs-string">&quot;status&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;alias&quot;</span><span class="hljs-symbol">:[]</span>,<span class="hljs-string">&quot;rtype&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;ftype&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;mvid&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;fee&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">8</span>,<span class="hljs-string">&quot;rUrl&quot;</span><span class="hljs-symbol">:null</span>,<span class="hljs-string">&quot;mark&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">270464</span>&#125;,&#123;<span class="hljs-string">&quot;id&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">27940350</span>,<span class="hljs-string">&quot;name&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;Dissention&quot;</span></span>,<span class="hljs-string">&quot;artists&quot;</span><span class="hljs-symbol">:</span>[&#123;<span class="hljs-string">&quot;id&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">844422</span>,<span class="hljs-string">&quot;name&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;Dissension&quot;</span></span>,<span class="hljs-string">&quot;picUrl&quot;</span><span class="hljs-symbol">:null</span>,<span class="hljs-string">&quot;alias&quot;</span><span class="hljs-symbol">:[]</span>,<span class="hljs-string">&quot;albumSize&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;picId&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;fansGroup&quot;</span><span class="hljs-symbol">:null</span>,<span class="hljs-string">&quot;img1v1Url&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg&quot;</span></span>,<span class="hljs-string">&quot;img1v1&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;trans&quot;</span><span class="hljs-symbol">:null</span>&#125;],<span class="hljs-string">&quot;album&quot;</span><span class="hljs-symbol">:</span>&#123;<span class="hljs-string">&quot;id&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">2697941</span>,<span class="hljs-string">&quot;name&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;Of Time and Chronic Disease&quot;</span></span>,<span class="hljs-string">&quot;artist&quot;</span><span class="hljs-symbol">:</span>&#123;<span class="hljs-string">&quot;id&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;name&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;&quot;</span></span>,<span class="hljs-string">&quot;picUrl&quot;</span><span class="hljs-symbol">:null</span>,<span class="hljs-string">&quot;alias&quot;</span><span class="hljs-symbol">:[]</span>,<span class="hljs-string">&quot;albumSize&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;picId&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;fansGroup&quot;</span><span class="hljs-symbol">:null</span>,<span class="hljs-string">&quot;img1v1Url&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg&quot;</span></span>,<span class="hljs-string">&quot;img1v1&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;trans&quot;</span><span class="hljs-symbol">:null</span>&#125;,<span class="hljs-string">&quot;publishTime&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">1378742400000</span>,<span class="hljs-string">&quot;size&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">10</span>,<span class="hljs-string">&quot;copyrightId&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">405025</span>,<span class="hljs-string">&quot;status&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;picId&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">109951164467988110</span>,<span class="hljs-string">&quot;mark&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>&#125;,<span class="hljs-string">&quot;duration&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">297786</span>,<span class="hljs-string">&quot;copyrightId&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">405025</span>,<span class="hljs-string">&quot;status&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;alias&quot;</span><span class="hljs-symbol">:[]</span>,<span class="hljs-string">&quot;rtype&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;ftype&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;mvid&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;fee&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">8</span>,<span class="hljs-string">&quot;rUrl&quot;</span><span class="hljs-symbol">:null</span>,<span class="hljs-string">&quot;mark&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">270336</span>&#125;,&#123;<span class="hljs-string">&quot;id&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">1332495519</span>,<span class="hljs-string">&quot;name&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;Dissension&quot;</span></span>,<span class="hljs-string">&quot;artists&quot;</span><span class="hljs-symbol">:</span>[&#123;<span class="hljs-string">&quot;id&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">87066</span>,<span class="hljs-string">&quot;name&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;Audiomachine&quot;</span></span>,<span class="hljs-string">&quot;picUrl&quot;</span><span class="hljs-symbol">:null</span>,<span class="hljs-string">&quot;alias&quot;</span><span class="hljs-symbol">:[]</span>,<span class="hljs-string">&quot;albumSize&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;picId&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;fansGroup&quot;</span><span class="hljs-symbol">:null</span>,<span class="hljs-string">&quot;img1v1Url&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg&quot;</span></span>,<span class="hljs-string">&quot;img1v1&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;trans&quot;</span><span class="hljs-symbol">:null</span>&#125;],<span class="hljs-string">&quot;album&quot;</span><span class="hljs-symbol">:</span>&#123;<span class="hljs-string">&quot;id&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">74830026</span>,<span class="hljs-string">&quot;name&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;A Measure of Darkness&quot;</span></span>,<span class="hljs-string">&quot;artist&quot;</span><span class="hljs-symbol">:</span>&#123;<span class="hljs-string">&quot;id&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;name&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;&quot;</span></span>,<span class="hljs-string">&quot;picUrl&quot;</span><span class="hljs-symbol">:null</span>,<span class="hljs-string">&quot;alias&quot;</span><span class="hljs-symbol">:[]</span>,<span class="hljs-string">&quot;albumSize&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;picId&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;fansGroup&quot;</span><span class="hljs-symbol">:null</span>,<span class="hljs-string">&quot;img1v1Url&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg&quot;</span></span>,<span class="hljs-string">&quot;img1v1&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;trans&quot;</span><span class="hljs-symbol">:null</span>&#125;,<span class="hljs-string">&quot;publishTime&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">1540828800000</span>,<span class="hljs-string">&quot;size&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">25</span>,<span class="hljs-string">&quot;copyrightId&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">602011</span>,<span class="hljs-string">&quot;status&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;picId&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">109951163718448730</span>,<span class="hljs-string">&quot;mark&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>&#125;,<span class="hljs-string">&quot;duration&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">135616</span>,<span class="hljs-string">&quot;copyrightId&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">2707446</span>,<span class="hljs-string">&quot;status&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;alias&quot;</span><span class="hljs-symbol">:[]</span>,<span class="hljs-string">&quot;rtype&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;ftype&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;mvid&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;fee&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">8</span>,<span class="hljs-string">&quot;rUrl&quot;</span><span class="hljs-symbol">:null</span>,<span class="hljs-string">&quot;mark&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">537010176</span>&#125;,&#123;<span class="hljs-string">&quot;id&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">1991513182</span>,<span class="hljs-string">&quot;name&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;Dissension&quot;</span></span>,<span class="hljs-string">&quot;artists&quot;</span><span class="hljs-symbol">:</span>[&#123;<span class="hljs-string">&quot;id&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">48257991</span>,<span class="hljs-string">&quot;name&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;SimplyCrispy&quot;</span></span>,<span class="hljs-string">&quot;picUrl&quot;</span><span class="hljs-symbol">:null</span>,<span class="hljs-string">&quot;alias&quot;</span><span class="hljs-symbol">:[]</span>,<span class="hljs-string">&quot;albumSize&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;picId&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;fansGroup&quot;</span><span class="hljs-symbol">:null</span>,<span class="hljs-string">&quot;img1v1Url&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg&quot;</span></span>,<span class="hljs-string">&quot;img1v1&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;trans&quot;</span><span class="hljs-symbol">:null</span>&#125;],<span class="hljs-string">&quot;album&quot;</span><span class="hljs-symbol">:</span>&#123;<span class="hljs-string">&quot;id&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">153654543</span>,<span class="hljs-string">&quot;name&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;Dissension&quot;</span></span>,<span class="hljs-string">&quot;artist&quot;</span><span class="hljs-symbol">:</span>&#123;<span class="hljs-string">&quot;id&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;name&quot;</span><span class="hljs-symbol">:<span class="hljs-string">&quot;&quot;</span></span>,<span class="hljs-string">&quot;picUrl&quot;</span><span class="hljs-symbol">:null</span>,<span class="hljs-string">&quot;alias&quot;</span><span class="hljs-symbol">:[]</span>,<span class="hljs-string">&quot;albumSize&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;picId&quot;</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>,<span class="hljs-string">&quot;fansGroup&quot;</span><span class="hljs-symbol">:null</span>,<span class="hljs-string">&quot;img1v1Ur&quot;</span>fee<span class="hljs-string">&quot;:8,&quot;</span>rUrl<span class="hljs-string">&quot;:null,&quot;</span>mark<span class="hljs-string">&quot;:270336&#125;,&#123;&quot;</span>id<span class="hljs-string">&quot;:1809937731,&quot;</span>name<span class="hljs-string">&quot;:&quot;</span><span class="hljs-title class_">Dissension</span><span class="hljs-string">&quot;,&quot;</span>artists<span class="hljs-string">&quot;:[&#123;&quot;</span>id<span class="hljs-string">&quot;:30333025,&quot;</span>name<span class="hljs-string">&quot;:&quot;</span><span class="hljs-title class_">Vincent</span> <span class="hljs-title class_">Gericke</span><span class="hljs-string">&quot;,&quot;</span>picUrl<span class="hljs-string">&quot;:null,&quot;</span><span class="hljs-keyword">alias</span><span class="hljs-string">&quot;:[],&quot;</span>albumSize<span class="hljs-string">&quot;:0,&quot;</span>picId<span class="hljs-string">&quot;:0,&quot;</span>fansGroup<span class="hljs-string">&quot;:null,&quot;</span>img1v1Url<span class="hljs-string">&quot;:&quot;</span><span class="hljs-symbol">http:</span>//p1.music.<span class="hljs-number">126</span>.net/<span class="hljs-number">6</span>y-<span class="hljs-title class_">UleORITEDbvrOLV0Q8A</span>==/<span class="hljs-number">5639395138885805</span>.jpg<span class="hljs-string">&quot;,&quot;</span>img1v1<span class="hljs-string">&quot;:0,&quot;</span>trans<span class="hljs-string">&quot;:null&#125;],&quot;</span>album<span class="hljs-string">&quot;:&#123;&quot;</span>id<span class="hljs-string">&quot;:121277551,&quot;</span>name<span class="hljs-string">&quot;:&quot;</span><span class="hljs-title class_">State</span> of <span class="hljs-title class_">Mind</span><span class="hljs-string">&quot;,&quot;</span>artist<span class="hljs-string">&quot;:&#123;&quot;</span>id<span class="hljs-string">&quot;:0,&quot;</span>name<span class="hljs-string">&quot;:&quot;</span><span class="hljs-string">&quot;,&quot;</span>picUrl<span class="hljs-string">&quot;:null,&quot;</span><span class="hljs-keyword">alias</span><span class="hljs-string">&quot;:[],&quot;</span>albumSize<span class="hljs-string">&quot;:0,&quot;</span>picId<span class="hljs-string">&quot;:0,&quot;</span>fansGroup<span class="hljs-string">&quot;:null,&quot;</span>img1v1Url<span class="hljs-string">&quot;:&quot;</span><span class="hljs-symbol">http:</span>//p1.music.<span class="hljs-number">126</span>.net/<span class="hljs-number">6</span>y-<span class="hljs-title class_">UleORITEDbvrOLV0Q8A</span>==/<span class="hljs-number">5639395138885805</span>.jpg<span class="hljs-string">&quot;,&quot;</span>img1v1<span class="hljs-string">&quot;:0,&quot;</span>trans<span class="hljs-string">&quot;:null&#125;,&quot;</span>publishTime<span class="hljs-string">&quot;:1612713600000,&quot;</span>size<span class="hljs-string">&quot;:4,&quot;</span>copyrightId<span class="hljs-string">&quot;:743010,&quot;</span>status<span class="hljs-string">&quot;:1,&quot;</span>picId<span class="hljs-string">&quot;:109951165624720372,&quot;</span>mark<span class="hljs-string">&quot;:0&#125;,&quot;</span>duration<span class="hljs-string">&quot;:312002,&quot;</span>copyrightId<span class="hljs-string">&quot;:743010,&quot;</span>status<span class="hljs-string">&quot;:0,&quot;</span><span class="hljs-keyword">alias</span><span class="hljs-string">&quot;:[],&quot;</span>rtype<span class="hljs-string">&quot;:0,&quot;</span>ftype<span class="hljs-string">&quot;:0,&quot;</span>mvid<span class="hljs-string">&quot;:0,&quot;</span>fee<span class="hljs-string">&quot;:8,&quot;</span>rUrl<span class="hljs-string">&quot;:null,&quot;</span>mark<span class="hljs-string">&quot;:270464&#125;],&quot;</span>songCount<span class="hljs-string">&quot;:300&#125;,&quot;</span>code<span class="hljs-string">&quot;:</span><br></code></pre></td></tr></table></figure>
+<p>其中一首歌曲有四个”id”:······，分别为歌曲ID、歌手ID、歌单ID、歌单歌手ID。<br>我们需要用到的是歌曲ID和歌手ID，因此对”id”的数量对4取模，取1和2时的数据位置存储。<br>找到了数据位置之后，我们用Fun函数来提取信息。（我实在想不到函数名了）<br>Fun函数里没什么，最基础的循环。</p>
+<h5 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h5><h6 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">Search</span>():<br>    Name = entry.get()<br>    search.Download(Name)<br>    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;Tmp.html&quot;</span>, encoding = <span class="hljs-string">&quot;utf-8&quot;</span>) <span class="hljs-keyword">as</span> f:<br>        Tmp = f.read()<br>        f.close()<br>    Parse(Tmp)<br></code></pre></td></tr></table></figure>
+<p>从搜索框中StringVar中提取文本，下载表单进行解析。</p>
+<h5 id="枯燥的GUI搭建"><a href="#枯燥的GUI搭建" class="headerlink" title="枯燥的GUI搭建"></a>枯燥的GUI搭建</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">No_x</span>():<br>    Label(window, text = <span class="hljs-string">&quot;序号&quot;</span>, font = (<span class="hljs-string">&quot;微软雅黑&quot;</span>, <span class="hljs-number">12</span>)).place(x = <span class="hljs-number">75</span>, y = <span class="hljs-number">125</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br>    Label(window, text = <span class="hljs-string">&quot; 1 &quot;</span>, font = (<span class="hljs-string">&quot;微软雅黑&quot;</span>, <span class="hljs-number">11</span>)).place(x = <span class="hljs-number">75</span>, y = <span class="hljs-number">160</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br>    Label(window, text = <span class="hljs-string">&quot; 2 &quot;</span>, font = (<span class="hljs-string">&quot;微软雅黑&quot;</span>, <span class="hljs-number">11</span>)).place(x = <span class="hljs-number">75</span>, y = <span class="hljs-number">195</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br>    Label(window, text = <span class="hljs-string">&quot; 3 &quot;</span>, font = (<span class="hljs-string">&quot;微软雅黑&quot;</span>, <span class="hljs-number">11</span>)).place(x = <span class="hljs-number">75</span>, y = <span class="hljs-number">230</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br>    Label(window, text = <span class="hljs-string">&quot; 4 &quot;</span>, font = (<span class="hljs-string">&quot;微软雅黑&quot;</span>, <span class="hljs-number">11</span>)).place(x = <span class="hljs-number">75</span>, y = <span class="hljs-number">265</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br>    Label(window, text = <span class="hljs-string">&quot; 5 &quot;</span>, font = (<span class="hljs-string">&quot;微软雅黑&quot;</span>, <span class="hljs-number">11</span>)).place(x = <span class="hljs-number">75</span>, y = <span class="hljs-number">300</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">Nm_x</span>():<br>    Label(window, font = (<span class="hljs-string">&quot;微软雅黑&quot;</span>, <span class="hljs-number">12</span>), text = <span class="hljs-string">&quot; 歌曲名 &quot;</span>).place(x = <span class="hljs-number">215</span>, y = <span class="hljs-number">125</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br>    Label(window, font = (<span class="hljs-string">&quot;微软雅黑&quot;</span>, <span class="hljs-number">10</span>), textvariable = Nm1).place(x = <span class="hljs-number">215</span>, y = <span class="hljs-number">160</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br>    Label(window, font = (<span class="hljs-string">&quot;微软雅黑&quot;</span>, <span class="hljs-number">10</span>), textvariable = Nm2).place(x = <span class="hljs-number">215</span>, y = <span class="hljs-number">195</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br>    Label(window, font = (<span class="hljs-string">&quot;微软雅黑&quot;</span>, <span class="hljs-number">10</span>), textvariable = Nm3).place(x = <span class="hljs-number">215</span>, y = <span class="hljs-number">230</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br>    Label(window, font = (<span class="hljs-string">&quot;微软雅黑&quot;</span>, <span class="hljs-number">10</span>), textvariable = Nm4).place(x = <span class="hljs-number">215</span>, y = <span class="hljs-number">265</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br>    Label(window, font = (<span class="hljs-string">&quot;微软雅黑&quot;</span>, <span class="hljs-number">10</span>), textvariable = Nm5).place(x = <span class="hljs-number">215</span>, y = <span class="hljs-number">300</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">Art_x</span>():<br>    Label(window, font = (<span class="hljs-string">&quot;微软雅黑&quot;</span>, <span class="hljs-number">12</span>), text = <span class="hljs-string">&quot; 歌手名 &quot;</span>).place(x = <span class="hljs-number">380</span>, y = <span class="hljs-number">125</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br>    Label(window, font = (<span class="hljs-string">&quot;微软雅黑&quot;</span>, <span class="hljs-number">10</span>), textvariable = Art1).place(x = <span class="hljs-number">380</span>, y = <span class="hljs-number">160</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br>    Label(window, font = (<span class="hljs-string">&quot;微软雅黑&quot;</span>, <span class="hljs-number">10</span>), textvariable = Art2).place(x = <span class="hljs-number">380</span>, y = <span class="hljs-number">195</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br>    Label(window, font = (<span class="hljs-string">&quot;微软雅黑&quot;</span>, <span class="hljs-number">10</span>), textvariable = Art3).place(x = <span class="hljs-number">380</span>, y = <span class="hljs-number">230</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br>    Label(window, font = (<span class="hljs-string">&quot;微软雅黑&quot;</span>, <span class="hljs-number">10</span>), textvariable = Art4).place(x = <span class="hljs-number">380</span>, y = <span class="hljs-number">265</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br>    Label(window, font = (<span class="hljs-string">&quot;微软雅黑&quot;</span>, <span class="hljs-number">10</span>), textvariable = Art5).place(x = <span class="hljs-number">380</span>, y = <span class="hljs-number">300</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">Down_x</span>():<br>    Label(window, font = (<span class="hljs-string">&quot;微软雅黑&quot;</span>, <span class="hljs-number">12</span>), text = <span class="hljs-string">&quot; 下载 &quot;</span>).place(x = <span class="hljs-number">500</span>, y = <span class="hljs-number">125</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br>    ttk.Button(window, text = <span class="hljs-string">&#x27;下载&#x27;</span>, command = Down1).place(x = <span class="hljs-number">500</span>, y = <span class="hljs-number">160</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br>    ttk.Button(window, text = <span class="hljs-string">&#x27;下载&#x27;</span>, command = Down2).place(x = <span class="hljs-number">500</span>, y = <span class="hljs-number">195</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br>    ttk.Button(window, text = <span class="hljs-string">&#x27;下载&#x27;</span>, command = Down3).place(x = <span class="hljs-number">500</span>, y = <span class="hljs-number">230</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br>    ttk.Button(window, text = <span class="hljs-string">&#x27;下载&#x27;</span>, command = Down4).place(x = <span class="hljs-number">500</span>, y = <span class="hljs-number">265</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br>    ttk.Button(window, text = <span class="hljs-string">&#x27;下载&#x27;</span>, command = Down5).place(x = <span class="hljs-number">500</span>, y = <span class="hljs-number">300</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br></code></pre></td></tr></table></figure>
+<p>自己看吧，tkinter的知识自己搜。</p>
+<h5 id="主函数"><a href="#主函数" class="headerlink" title="主函数"></a>主函数</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>():<br>    <span class="hljs-keyword">global</span> Nm1, Nm2, Nm3, Nm4, Nm5<br>    <span class="hljs-keyword">global</span> Art1, Art2, Art3, Art4, Art5<br>    <span class="hljs-keyword">global</span> window, entry<br>    window = Tk()<br>    window.title(<span class="hljs-string">&quot;网易云音乐下载器 2.0  Powered by 印皓显&quot;</span>)<br>    window.geometry(<span class="hljs-string">&quot;600x350&quot;</span>)<br>    window.iconphoto(<span class="hljs-literal">False</span>, PhotoImage(file = WorkDir + <span class="hljs-string">&quot;\\ICON.png&quot;</span>))<br>    lb = Label(window, text = <span class="hljs-string">&quot;网易云音乐下载器&quot;</span>, width = <span class="hljs-number">16</span>, height = <span class="hljs-number">1</span>, justify = <span class="hljs-string">&quot;center&quot;</span>, anchor = <span class="hljs-string">&quot;nw&quot;</span>, font = (<span class="hljs-string">&quot;宋体&quot;</span>, <span class="hljs-number">18</span>), fg = <span class="hljs-string">&quot;white&quot;</span>, bg = <span class="hljs-string">&quot;grey&quot;</span>, padx = <span class="hljs-number">10</span>, pady = <span class="hljs-number">5</span>)<br>    lb.place(x = <span class="hljs-number">300</span>, y = <span class="hljs-number">35</span>, anchor = <span class="hljs-string">&quot;center&quot;</span>)<br>    Nm1  = StringVar(); Nm2 = StringVar(); Nm3 = StringVar(); Nm4 = StringVar(); Nm5 = StringVar()<br>    Art1  = StringVar(); Art2 = StringVar(); Art3 = StringVar(); Art4 = StringVar(); Art5 = StringVar()<br>    Initialize()<br>    sv1 = StringVar()<br>    sv1.<span class="hljs-built_in">set</span>(<span class="hljs-string">&quot;在这里输入要搜索的歌名&quot;</span>)<br>    entry = ttk.Entry(window, width = <span class="hljs-number">40</span>, justify = CENTER, font = (<span class="hljs-string">&quot;微软雅黑&quot;</span>, <span class="hljs-number">10</span>),  exportselection = <span class="hljs-number">0</span>, textvariable = sv1)<br>    entry.place(x = <span class="hljs-number">55</span>, y = <span class="hljs-number">72.5</span>)<br>    png = PhotoImage(file =  WorkDir + <span class="hljs-string">&quot;\\Search.png&quot;</span>)<br>    button_search = ttk.Button(window, image = png, command = Search)<br>    button_search.place(x = <span class="hljs-number">450</span>, y = <span class="hljs-number">68</span>)<br>    No_x(); Nm_x(); Art_x(); Down_x()<br>    window.mainloop()<br></code></pre></td></tr></table></figure>
+<p>注：Nm{x} &#x3D; StringVar()那一段不能写成这样</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">Nm1 = Nm2 = Nm3 = Nm4 = Nm5 = StringVar()<br></code></pre></td></tr></table></figure>
+<p>StringVar每次的返回值指向的对象不一样，如果写成这样的形式会让五个变量指向的对象一样，那五个名字会同步（不相信你试试？）。<br>最后调用main函数：</p>
+<pre><code class="python">if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Python制作网易云音乐下载器 2.0 版本</div>
+      <div>https://yhx5129.github.io/Blog-Hexo/2023/10/14/Python制作网易云音乐下载器-Version2.0/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>ZnO</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年10月14日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/Blog-Hexo/2023/10/14/%E7%94%A8Python%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AAPDF%E8%BD%ACWord%E5%B7%A5%E5%85%B7(V2.1)/" title="用Python制作一个PDF转Word工具">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">用Python制作一个PDF转Word工具</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/Blog-Hexo/2023/10/14/PVZ%E4%B8%80%E4%BB%A3%E7%94%9F%E5%AD%98%E6%97%A0%E5%B0%BD%E6%95%99%E5%AD%A6%EF%BC%9A%E3%80%90PE%E3%80%91%E7%BB%8F%E5%85%B8%E5%9B%9B%E7%82%AE/" title="PVZ一代生存无尽教学：【PE】经典四炮">
+                        <span class="hidden-mobile">PVZ一代生存无尽教学：【PE】经典四炮</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"I7pPzOmJCHlBJeCTGNChljgX-9Nh9j0Va","appKey":"cuFQWP1zvsU1oGbSodCkSotR","path":"window.location.pathname","placeholder":"留下你精彩的评论吧","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"https://i7ppzomj.lc-cn-e1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> </br> <a href="https://yhx5129.github.io" target="_blank" rel="nofollow noopener"><span>主页</span></a> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/Blog-Hexo/js/events.js" ></script>
+<script  src="/Blog-Hexo/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/Blog-Hexo/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/Blog-Hexo/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/Blog-Hexo/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
