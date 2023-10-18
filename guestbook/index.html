@@ -16,21 +16,21 @@
   <meta name="author" content="ZnO">
   <meta name="keywords" content="">
   
-    <meta name="description" content="123title: 关于layout: aboutcomment: &amp;#x27;valine&amp;#x27;  这里是印皓显的Hexo博客。 对，我的bilibili名是我的姓名首字母缩写和笔画数。 我是一个极其弱的初二学生、Oier和UP主。 下面是留言板。">
+    <meta name="description" content="欢迎大家留言，为我提出意见。">
 <meta property="og:type" content="website">
-<meta property="og:title" content="page.title">
-<meta property="og:url" content="https://yhx5129.github.io/Blog-Hexo/about/index.html">
+<meta property="og:title" content="留言板">
+<meta property="og:url" content="https://yhx5129.github.io/Blog-Hexo/guestbook/index.html">
 <meta property="og:site_name" content="ZnO&#39;s Blog.">
-<meta property="og:description" content="123title: 关于layout: aboutcomment: &amp;#x27;valine&amp;#x27;  这里是印皓显的Hexo博客。 对，我的bilibili名是我的姓名首字母缩写和笔画数。 我是一个极其弱的初二学生、Oier和UP主。 下面是留言板。">
+<meta property="og:description" content="欢迎大家留言，为我提出意见。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-10-18T04:37:39.183Z">
-<meta property="article:modified_time" content="2023-10-18T04:37:39.183Z">
+<meta property="article:published_time" content="2023-10-17T14:36:29.000Z">
+<meta property="article:modified_time" content="2023-10-17T14:37:14.638Z">
 <meta property="article:author" content="ZnO">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>page.title - ZnO&#39;s Blog.</title>
+  <title>留言板 - ZnO&#39;s Blog.</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -190,7 +190,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="page.title"></span>
+            <span id="subtitle" data-typed-text="留言板"></span>
           
         </div>
 
@@ -218,15 +218,40 @@
                 
 
 <article class="page-content">
-  <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">title:</span> <span class="hljs-string">关于</span><br><span class="hljs-attr">layout:</span> <span class="hljs-string">about</span><br><span class="hljs-attr">comment:</span> <span class="hljs-string">&#x27;valine&#x27;</span><br></code></pre></td></tr></table></figure>
-
-<p>这里是印皓显的Hexo博客。</p>
-<p>对，我的bilibili名是我的姓名首字母缩写和笔画数。</p>
-<p>我是一个<del>极其弱的</del>初二学生、Oier和UP主。</p>
-<p>下面是留言板。</p>
+  <p>欢迎大家留言，为我提出意见。</p>
 
 
   
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"I7pPzOmJCHlBJeCTGNChljgX-9Nh9j0Va","appKey":"cuFQWP1zvsU1oGbSodCkSotR","path":"window.location.pathname","placeholder":"留下你精彩的评论吧","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"https://i7ppzomj.lc-cn-e1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
 
 </article>
 
