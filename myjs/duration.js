@@ -1,4 +1,4 @@
-var now = new Date();
+<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\Blog-Hexo\assets\css\APlayer.min.css"><script src="\Blog-Hexo\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>var now = new Date();
 function createtime() {
     var grt= new Date("10/14/2023 17:30:00");//在此处修改你的建站时间，格式：月/日/年 时:分:秒
     now.setTime(now.getTime()+250);
